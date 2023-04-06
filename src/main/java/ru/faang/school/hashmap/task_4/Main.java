@@ -8,28 +8,23 @@ import java.util.Map;
 public class Main {
     private static Map<String, WeatherData> weatherDataMap = new HashMap<>();
     public static void main(String[] args) {
-        List<WeatherData> weatherDataList = new ArrayList<>();
-        for (int i = 0; i <= 1000000; i++){
-            getWeatherData("City " + i);
-            weatherDataList.add(weatherDataMap.get("City " + i));
+        for (int i = 0; i <= 10; i++){
+            System.out.println(getWeatherData("City " + i));
         }
-        long list = System.currentTimeMillis();
-        for (WeatherData weatherData : weatherDataList){
-            System.out.println(weatherData);
-        }
-        long resultList = System.currentTimeMillis() - list;
 
-        long map = System.currentTimeMillis();
+        deleteWeatherCash("City 5");
+        deleteWeatherCash("City 1");
+        deleteWeatherCash("City 2");
+        deleteWeatherCash("City 3");
         showAllCities();
-        long resultMap = System.currentTimeMillis() - map;
-
-        System.out.println("List: " + resultList + " Map: " + resultMap);
+        for (int i = 0; i <= 10; i++){
+            System.out.println(getWeatherData("City " + i));
+        }
     }
 
     public static WeatherData getWeatherData(String cityName){
         if (!weatherDataMap.containsKey(cityName)) {
-            JDBC.getData();
-            updateWeatherData(cityName, new WeatherData(cityName, Math.random() * 50, Math.random() * 85));
+            updateWeatherData(cityName, JDBC.getData(cityName));
         }
         return weatherDataMap.get(cityName);
     }
