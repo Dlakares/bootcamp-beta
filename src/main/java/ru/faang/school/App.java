@@ -1,12 +1,12 @@
 package ru.faang.school;
 
+import ru.faang.school.LRUCacheTast.classes.Data;
+
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 public class App {
-    public static void main(String[] args) {
-        String s = "Строка для разделения по словами";
-        System.out.println(Arrays
-                .toString(s.split(" "))
-                .replaceAll(" ", ""));
-    }
+
+
 }
